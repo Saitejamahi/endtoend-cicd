@@ -21,6 +21,7 @@ pipeline {
             echo 'Build Docker Image'
             docker build -t 'https://github.com/Saitejamahi/endtoend-cicd',
             branch: 'main'
+            '''
             }
         }
         stage('Push the artifacts')
@@ -29,7 +30,7 @@ pipeline {
             sh '''
             echo 'push to Repo'
             'docker push Saitejamahi/endtoend-cicd :$(BUILD_NUMBER)'
-            ...
+            '''
               }
         }
       }
