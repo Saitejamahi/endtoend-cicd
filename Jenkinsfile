@@ -8,7 +8,7 @@ pipeline {
       stage('Checkout')
       {
         steps{
-            git credintialsId : 'your-credentials-id'' ,
+            git credintialsId : 'github' ,
             url: 'https://github.com/Saitejamahi/endtoend-cicd',
             branch: 'main'
         }
@@ -36,7 +36,7 @@ pipeline {
       stage('checkout k8s manifest SCM')
       {
         steps{
-          git credintialId: 'your-credentials-id'',
+          git credintialId: 'github',
             branch: 'main'
         }
       }
