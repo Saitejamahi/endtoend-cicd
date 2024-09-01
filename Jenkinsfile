@@ -22,7 +22,7 @@ pipeline {
                     // Build the Docker image
                     sh '''
                     echo "Building Docker Image"
-                    docker build -t Saitejamahi/endtoend-cicd:${IMAGE_TAG} .
+                    docker build -t saitejamahi/endtoend-cicd:${IMAGE_TAG} .
                     '''
                 }
             }
@@ -34,7 +34,7 @@ pipeline {
                     // Push the Docker image to the repository
                     sh '''
                     echo "Pushing Docker Image to Repo"
-                    docker push Saitejamahi/endtoend-cicd:${IMAGE_TAG}
+                    docker push saitejamahi/endtoend-cicd:${IMAGE_TAG}
                     '''
                 }
             }
