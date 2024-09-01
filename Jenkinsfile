@@ -28,7 +28,7 @@ pipeline {
           steps{
             sh '''
             echo 'push to Repo'
-            docker push Saitejamahi/endtoend-cicd :$(BUILD_NUMBER)
+            'docker push Saitejamahi/endtoend-cicd :$(BUILD_NUMBER)'
             ...
               }
         }
