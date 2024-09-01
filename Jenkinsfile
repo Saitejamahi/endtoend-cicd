@@ -8,7 +8,7 @@ pipeline {
       stage('Checkout')
       {
         steps{
-            git credintialsId : '' ,
+            git credintialsId : 'your-credentials-id'' ,
             url: 'https://github.com/Saitejamahi/endtoend-cicd',
             branch: 'main'
         }
@@ -27,7 +27,7 @@ pipeline {
         {
           steps{
             sh '''
-            echo 'push to Rpo'
+            echo 'push to Repo'
             docker push Saitejamahi/endtoend-cicd :$(BUILD_NUMBER)
             ...
               }
@@ -36,7 +36,7 @@ pipeline {
       stage('checkout k8s manifest SCM')
       {
         steps{
-          git credintialId: '',
+          git credintialId: 'your-credentials-id'',
             branch: 'main'
         }
       }
