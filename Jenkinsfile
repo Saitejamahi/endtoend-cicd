@@ -4,7 +4,7 @@ pipeline
   {
     environment
     {
-      IMAGE_TAG = "${BUILD_NUMBER}"
+      IMAGE_TAG = "${env.BUILD_NUMBER}"
     }
     stages 
       {
@@ -13,7 +13,7 @@ pipeline
         steps
           {
             git credintialsId : 'github' ,
-            url: 'https://github.com/Saitejamahi/endtoend-cicd',
+            url: 'https://github.com/Saitejamahi/endtoend-cicd.git',
             branch: 'main'
           }
         }
@@ -25,10 +25,11 @@ pipeline
           {
             sh '''
             echo 'Build Docker Image'
-            docker build -t 'https://github.com/Saitejamahi/endtoend-cicd' ,
+            docker build -t Saitejamahi/endtoend-cicd.git .
             branch: 'main'
             '''
             }
+          }
         }
         stage('Push the artifacts')
         {
@@ -36,7 +37,7 @@ pipeline
           {
             sh '''
             echo 'push to Repo'
-            'docker push Saitejamahi/endtoend-cicd :$(BUILD_NUMBER)'
+            docker push Saitejamahi/endtoend-cicd : "${IMAGE_TAG}"
             '''
            }
         }
@@ -55,7 +56,7 @@ pipeline
         {
           script
           {
-            withCredintials([usernamePassword(credintalsId: '',passwordVariable: 'GIT-PASSWORD', usernameVariable: 'GIT_USERNAME')])
+            withCredintials([usernamePassword(credintalsId: 'github',passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')])
             {
               sh '''
               cat deploy.yaml
@@ -69,6 +70,7 @@ pipeline
               }
             }
           }
+        
       }
     }
   
